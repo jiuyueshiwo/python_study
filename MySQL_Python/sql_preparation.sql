@@ -51,7 +51,8 @@ create table order_detail(
 	quantity int unsigned not null
 );
 
-
+--商品信息的视图创建
+create view v_goods_info as select goods.*, cate.name as cate_name, brand.name as brand_name from goods left join goods_cates as cate on goods.cate_id=cate.id left join goods_brands as brand on goods.brand_id=brand.id
 
 
 
