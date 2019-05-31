@@ -7,7 +7,8 @@ class BarSpider(object):
 		self.bar_name = bar_name
 		self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"}
 		self.url_temp = "https://tieba.baidu.com/f?kw="+self.bar_name+"&ie=utf-8&pn={}"
-		self.path_name = "C:/Users/Administrator/Desktop/贴吧/"+self.bar_name+"吧第{}页.html"
+		self.dir_path = "C:/Users/Administrator/Desktop/"+self.bar_name+"贴吧"
+		self.path_name = self.dir_path+"/"+self.bar_name+"吧第{}页.html"
 		
 
 	def get_url_list(self):
@@ -24,7 +25,7 @@ class BarSpider(object):
 			print("sucess %s page" % page_num)
 
 	def run(self):
-		os.mkdir("C:/Users/Administrator/Desktop/贴吧")
+		os.mkdir(self.dir_path)
 		#合成URL
 		url_list = self.get_url_list()
 		for url_temp in url_list:
