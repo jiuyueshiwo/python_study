@@ -6,6 +6,23 @@ import string
 
 rg = string.digits + string.ascii_letters + string.punctuation
 
+def file_crack():
+	file_name = "D:\\my_git_repo\\my_package\\DUBrute-2.1-UPDATE-03.03.12\\DUBrute-2.1-UPDATE-03.03.12\\27K给力字典.txt"
+	with open(file_name, "r") as f:
+		while True:
+			passwd = f.readline().strip('\n')
+			if not passwd:
+				break
+			command='c:\\Program Files\\7Zip\\7z.exe -p'+passwd+' t C:/Users/Administrator/Desktop/genxi.zip'  #t 表示test，不进行实际解压，只测试密码
+			os.system("cls")
+			print("\r尝试密码为："+passwd, end="")
+			child=subprocess.call(command)
+			#os.popen(command)#这个也可以用,但是不好监控解压状态
+			if child==0:
+				print(child)
+				print("密码为："+passwd)
+				return True
+
 def _brutecrack(rg):
 	for a in rg:
 		for b in rg:
@@ -36,4 +53,5 @@ def brutecrack():
 	_brutecrack(rg_temp)
 	
 if __name__ == '__main__':
-	brutecrack()
+	file_crack()
+	#brutecrack()
